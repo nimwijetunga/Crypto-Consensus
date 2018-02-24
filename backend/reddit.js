@@ -1,4 +1,6 @@
 var r = require("nraw");
+var fs = require('fs');
+
 var Reddit = new r("Testbot v0.0.1 by Mobilpadde");
 
 function get_data(coin,date){
@@ -35,7 +37,7 @@ function get_data(coin,date){
 
 		    index++;
 
-		}while(date.getFullYear() < a.getFullYear() && date.getMonth() < a.getMonth() && date.getDate() < a.getDate());
+		}while(date.getFullYear() < a.getFullYear() || (date.getFullYear() == a.getFullYear && date.getMonth() < a.getMonth()) || (date.getFullYear() == a.getFullYear && date.getMonth() == a.getMonth() && date.getDate() < a.getDate()));
 		resolve(final_object);		
 
 	})
@@ -72,20 +74,23 @@ function child_data_per(coin, date, parent,index){//Last parameter is the parent
 
 				index++;
 
-			}while(date.getFullYear() < a.getFullYear() && date.getMonth() < a.getMonth() && date.getDate() < a.getDate());
+		}while(date.getFullYear() < a.getFullYear() || (date.getFullYear() == a.getFullYear && date.getMonth() < a.getMonth()) || (date.getFullYear() == a.getFullYear && date.getMonth() == a.getMonth() && date.getDate() < a.getDate()));
 			resolve(final_object);
 
 		})
 	});
 }
 
-async function crawler(coin,date){
 
-	var final_data = new Array();
+module.exports = {
 
-	var obj = await get_data(coin,date);
+	 crawler : async function(coin,date){
 
-	var index = 0;
+		var final_data = new Array();
+
+		var obj = await get_data(coin,date);
+
+		var index = 0;
 	while(obj[index] != undefined){//Add parent objects
 		var tmp = {time:obj[index].time, title:obj[index].title, score:obj[index].score};
 		final_data.push(tmp);
@@ -106,14 +111,14 @@ async function crawler(coin,date){
 		index++;
 	}
 
-	console.log(final_data);
+	/*var data = JSON.stringify(final_data);
+	fs.writeFile('reddit-crawler.json',data,finished);
+	function finished(err){
+		console.log('Cool');
+	}*/
 
-	 return final_data;
+	return final_data;
 
 }
 
-var d = new Date(12,12,12);
-
-crawler("dogecoin",d).then(function(result){
-	console.log(result);
-});
+}

@@ -1,6 +1,11 @@
 'use strict';
 
 let https = require ('https');
+
+var reddit = require("./reddit.js");
+var fs = require('fs');
+
+
 var obj;
 
 // **********************************************
@@ -27,16 +32,20 @@ let response_handler = function (response) {
     response.on ('data', function (d) {
         body += d;
     });
-    response.on ('end', function () {
+    response.on ('end', function () {//Return sentiments here
         let body_ = JSON.stringify(JSON.parse (body));
-        //console.log(body_);
-        resolve(body_);
-
+        console.log(body_);
     });
     response.on ('error', function (e) {
         console.log ('Error: ' + e.message);
     });
 };
+
+function weight_avg(sent){
+    /*if(sent == undefined)return;
+    else if(sent.documents == undefined)return;*/
+
+}
 
 let get_sentiments = function (documents) {
     let body = JSON.stringify (documents);
@@ -57,13 +66,33 @@ let get_sentiments = function (documents) {
 
 }
 
-let documents = { 'documents': [
+/*let documents = { 'documents': [
     { 'id': '1', 'language': 'en', 'text': 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
     { 'id': '2', 'language': 'es', 'text': 'Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico.' },
 ]};
 
-get_sentiments (documents);
+get_sentiments (documents);*/
 
-async function getObj(){
-    
+function get_data(data){
+    var d = new Date(data.date * 1000);
+    var coin = data.coin;
+
+    reddit.crawler(coin,d).then(function (result){
+
+        //Sentiment Analysis
+        var documents = JSON.parse(fs.readFileSync('template.json', 'utf8'));
+        var index = 0;
+        while(result[index] != undefined){
+            var id = index + 1;
+            var temp = {id:id.toString(), language: 'en', text:result[index].title};
+            documents.documents.push(temp);
+            index++;
+        }
+        get_sentiments(documents);
+    })
 }
+
+var data = fs.readFileSync('test.json', 'utf8');
+var data_rev = JSON.parse(data);
+
+get_data(data_rev);

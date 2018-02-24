@@ -1,0 +1,13 @@
+var reddit = require('raw.js');
+var CommentStream = reddit.CommentStream;
+
+var stream = new CommentStream({"subreddit": "AskReddit", "run": false});
+stream.on('comment', function(comment) {
+    console.log("New comment in subreddit " + comment.subreddit + ", content " + comment.body);
+});
+
+stream.on('error', function(e) {
+    console.log("Error: " + e);
+});
+
+stream.start();

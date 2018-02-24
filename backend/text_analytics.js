@@ -66,4 +66,5 @@ get_sentiments (documents);
 
 async function getObj(){
     
+    
 }

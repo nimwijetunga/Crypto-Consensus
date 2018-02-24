@@ -73,6 +73,7 @@ let get_sentiments = function (documents) {
 
 get_sentiments (documents);*/
 
+<<<<<<< HEAD
 function get_data(data){
     var d = new Date(data.date * 1000);
     var coin = data.coin;
@@ -96,3 +97,9 @@ var data = fs.readFileSync('test.json', 'utf8');
 var data_rev = JSON.parse(data);
 
 get_data(data_rev);
+=======
+async function getObj(){
+    
+    
+}
+>>>>>>> 9e7457b1439293b966ff68ef35d80ca0aaf76856

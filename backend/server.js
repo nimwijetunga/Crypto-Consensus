@@ -34,6 +34,7 @@ function response_handler (response) {
     response.on ('end', function () {//Return sentiments here
         let body_ = (JSON.parse (body));
         var avg = weight_avg(body_);
+
         var categor = classify(body_);
         var tmp = {sentiment:avg, good:categor[0], bad:categor[1], avg:categor[2]}
         var data = JSON.stringify(tmp);
@@ -107,6 +108,8 @@ function get_data(coin, d){
 
     reddit.crawler(coin,d).then(function (result){
 
+        console.log(result);
+
         //Sentiment Analysis
         var documents = JSON.parse(fs.readFileSync('template.json', 'utf8'));
         fs.writeFileSync('reddit-crawler.json', JSON.stringify(result));
@@ -123,10 +126,15 @@ function get_data(coin, d){
 /*var data = fs.readFileSync('test.json', 'utf8');
 var data_rev = JSON.parse(data);*/
 
-var coin = req.params.coin;
-var d = req.params.date;
+console.log(req);
+
+var coin = req.query.coin;
+var d = req.query.date;
+
+console.log(coin + "hi");
 
 get_data(coin, d);
+
 });
 
 app.listen(3005, ()=> {

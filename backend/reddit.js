@@ -37,7 +37,7 @@ function get_data(coin,date){
 
 		    index++;
 
-		}while(date.getFullYear() < a.getFullYear() || (date.getFullYear() == a.getFullYear && date.getMonth() < a.getMonth()) || (date.getFullYear() == a.getFullYear && date.getMonth() == a.getMonth() && date.getDate() < a.getDate()));
+		}while(unix_timestamp >= date);
 		resolve(final_object);		
 
 	})
@@ -74,7 +74,7 @@ function child_data_per(coin, date, parent,index){//Last parameter is the parent
 
 				index++;
 
-		}while(date.getFullYear() < a.getFullYear() || (date.getFullYear() == a.getFullYear && date.getMonth() < a.getMonth()) || (date.getFullYear() == a.getFullYear && date.getMonth() == a.getMonth() && date.getDate() < a.getDate()));
+		}while(unix_timestamp >= date);
 			resolve(final_object);
 
 		})
@@ -85,6 +85,8 @@ function child_data_per(coin, date, parent,index){//Last parameter is the parent
 module.exports = {
 
 	 crawler : async function(coin,date){
+
+	 	date = date.getTime()/1000;
 
 		var final_data = new Array();
 

@@ -29,7 +29,7 @@ function analyzeSentiment(days, coin){
 				$('#load').hide();
 				$('#load2').hide();
 				document.getElementById("analysis").innerHTML = "Analysis Complete!"
-				setVerdict("data.sentiment");
+				setVerdict(data.sentiment);
 			});
 	});
 
@@ -51,6 +51,7 @@ function analyzeSentiment(days, coin){
 function setSentiment(sentiment){
 	console.log(sentiment);
 	var bar = document.getElementById("sentimentRating");
+	bar.style.color="Black";
 	bar.innerHTML = Math.round(sentiment*100) + "%";
 	bar.style.width = (sentiment*100 + "%")	;
 	if(sentiment < 0.3){
@@ -67,16 +68,16 @@ function setSentiment(sentiment){
 function setVerdict(sentiment){
 	var verdict = document.getElementById("verdict");
 	if(sentiment < 0.3){
-		verdict.innerHTML = "Avoid! This coin does not have a good standing!"
+		verdict.innerHTML = "Avoid! This coin does not have a good standing!";
 	}
 	else if(sentiment < 0.5){
-		verdict.innerHTML = "Neutral, but slightly negative. "
+		verdict.innerHTML = "Neutral, but slightly negative. ";
 	}
 	else if(sentiment < 0.7){
-		verdict.innerHTML = "Slightly positive, but not by much."
+		verdict.innerHTML = "Slightly positive, but not by much.";
 	}
 	else{
-		verdict.innerHTML = "Very positive! This coin is very favored by traders!"
+		verdict.innerHTML = "Very positive! This coin is very favored by traders!";
 	}
 }
 

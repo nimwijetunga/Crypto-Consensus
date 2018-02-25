@@ -29,7 +29,7 @@ function analyzeSentiment(days, coin){
 				$('#load').hide();
 				$('#load2').hide();
 				document.getElementById("analysis").innerHTML = "Analysis Complete!"
-				setVerdict("data.sentiment");
+				setVerdict(data.sentiment);
 			});
 	});
 
@@ -51,6 +51,7 @@ function analyzeSentiment(days, coin){
 function setSentiment(sentiment){
 	console.log(sentiment);
 	var bar = document.getElementById("sentimentRating");
+	bar.style.color="Black";
 	bar.innerHTML = Math.round(sentiment*100) + "%";
 	bar.style.width = (sentiment*100 + "%")	;
 	if(sentiment < 0.3){

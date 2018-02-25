@@ -29,7 +29,7 @@ function analyzeSentiment(days, coin){
 				$('#load').hide();
 				$('#load2').hide();
 				document.getElementById("analysis").innerHTML = "Analysis Complete!"
-				setVerdict("data.sentiment");
+				setVerdict(data.sentiment);
 			});
 	});
 

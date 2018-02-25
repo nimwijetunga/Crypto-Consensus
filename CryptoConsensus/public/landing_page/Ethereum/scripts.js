@@ -1,6 +1,6 @@
 function analyzeSentiment(days, coin){
 	var d = new Date();
-	d.setDate(d.getDate() + days);
+	d.setDate(d.getDate() - days);
 	var u = d.getTime()/1000;
 	
 	//create json object
@@ -16,28 +16,31 @@ function analyzeSentiment(days, coin){
 			console.log(data);
 		});
 	});*/
-
-	/*$(document).ready(function(){
-		$.get("http://localhost:3005/bitcoin?coin=\"Bitcoin\"&date="+u,
+	console.log(u);
+	$(document).ready(function(){
+		$.get("http://localhost:3005/bitcoin?coin="+coin+"&date="+u,
 			function(data){
+				data=JSON.parse(data);
+				console.log(data);
 				$('#totalSentiment').show();
 				drawChart(data.bad, data.avg, data.good);
+				console.log(data.sentiment);
 				setSentiment(data.sentiment);
 				$('#load').hide();
-				$('#load2'.hide();
+				$('#load2').hide();
 				document.getElementById("analysis").innerHTML = "Analysis Complete!"
 				setVerdict("data.sentiment");
 			});
-	});*/
+	});
 
-	$('#totalSentiment').show();
+	/*$('#totalSentiment').show();
 	drawChart(20,20,20);
 	setSentiment(0.5);
 	$('#load').hide();
 	//$('#load2').hide();
 	document.getElementById("sentimentRating").style.color="Black";
 	document.getElementById("analysis").innerHTML = "Analysis Complete!"
-	setVerdict(0.5);
+	setVerdict(0.5);*/
 	/*$(document).ready(function(){
 		$(".selectDays").click(function(){
 			$("#analysis").toggle();
@@ -46,8 +49,9 @@ function analyzeSentiment(days, coin){
 }
 
 function setSentiment(sentiment){
+	console.log(sentiment);
 	var bar = document.getElementById("sentimentRating");
-	bar.innerHTML = sentiment*100 + "%";
+	bar.innerHTML = Math.round(sentiment*100) + "%";
 	bar.style.width = (sentiment*100 + "%")	;
 	if(sentiment < 0.3){
 		bar.style.backgroundColor = "red";

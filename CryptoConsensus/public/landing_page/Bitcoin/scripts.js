@@ -18,7 +18,7 @@ function analyzeSentiment(days, coin){
 	});*/
 	console.log(u);
 	$(document).ready(function(){
-		$.get("http://localhost:3005/bitcoin?coin=Bitcoin&date="+u,
+		$.get("http://localhost:3005/bitcoin?coin="+coin+"&date="+u,
 			function(data){
 				data=JSON.parse(data);
 				console.log(data);

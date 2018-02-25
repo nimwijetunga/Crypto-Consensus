@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Bitcoin Analysis</title>
+    <title>Ethereum Analysis</title>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,39 +37,33 @@
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-        <a class="navbar-brand" href="#">Crypto Predictor</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="../index.html">Crypto Consensus</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <ul class=" nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
                 All Coins</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item" href="#">Bitcoin</a>
-                 <a class="dropdown-item" href="#">Dogecoin</a>
-                 <a class="dropdown-item" href="#">Ethereum</a>
-                 <a class="dropdown-item" href="#">Litecoin</a>
-                 <a class="dropdown-item" href="#">Iota</a>
-                 </div>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="../Bitcoin/index.html">Bitcoin</a></li>
+                 <li><a class="dropdown-item" href="../Dogecoin/index.html">Dogecoin</a></li>
+                 <li><a class="dropdown-item" href="../Ethereum/index.html">Ethereum</a></li>
+                 <li><a class="dropdown-item" href="../Litecoin/index.html">Litecoin</a></li>
+                 <li><a class="dropdown-item" href="../Iota/index.html">Iota</a></li>
+                 </ul>
             </li>
         </ul>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
+            <a class="nav-link" href="../Bitcoin/index.html">Bitcoin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Bitcoin</a>
+              <a class="nav-link" href="../Ethereum/index.html">Ethereum</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Ethereum</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Litecoin</a>
+              <a class="nav-link" href="../Litecoin/index.html">Litecoin</a>
             </li>
           </ul>
         </div>
@@ -80,7 +74,7 @@
     <div class="container">
       <div class="row">
         <div class="col-5 text-center">
-          <h1 class="mt-5">Bitcoin Analysis</h1>
+          <h1 class="mt-5">Ethereum Analysis</h1>
           <!--<p class="lead">Real time analysis of cryptocurrencies using Reddit</p>
           <ul class="list-unstyled">
             <li>Bootstrap 4.0.0</li>
@@ -91,13 +85,13 @@
           </div>
           <div class="row">
              <div class="col selectDays">
-               <button type="button" class="btn btn-primary" onClick="analyzeSentiment(1, 'Bitcoin')">Past Day</button>
+               <button type="button" class="btn btn-primary" onClick="analyzeSentiment(1, 'Ethereum')">Past Day</button>
              </div>
              <div class="col selectDays">
-               <button type="button" class="btn btn-primary" onClick="analyzeSentiment(3,'Bitcoin')">Past 3 Days</button>
+               <button type="button" class="btn btn-primary" onClick="analyzeSentiment(3,'Ethereum')">Past 3 Days</button>
             </div>
             <div class="col selectDays">
-              <button type="button" class="btn btn-primary" onClick="analyzeSentiment(7, 'Bitcoin')">Past Week</button>
+              <button type="button" class="btn btn-primary" onClick="analyzeSentiment(7, 'Ethereum')">Past Week</button>
             </div>
           </div>
             <div id="analysis" class = "mt-5 mb-7"> Analysis in Progress</div>
@@ -110,7 +104,7 @@
           <div id = "totalSentiment" class="progress center-block">
             <div id = "sentimentRating" class="progress-bar"></div> 
           </div>
-          <div id = "verdict" class = "mt-5" align="center"></div>
+          <div id = "verdict" class = "mt-4" align="center"></div>
         </div>
       </div>
     </div>

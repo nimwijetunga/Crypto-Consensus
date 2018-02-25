@@ -18,7 +18,7 @@ Clone this repository
 git clone git@github.com:nimwijetunga/hack-the-valley-app.git
 ```
 
-Start the Express JS service (text_analytics.js file) which allows the server to communicate with the web app using local host
+Start the Express JS service (server.js file) which allows the server to communicate with the web app using local host
 
 ```
 npm start

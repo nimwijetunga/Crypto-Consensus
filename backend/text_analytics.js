@@ -5,18 +5,14 @@ let https = require ('https');
 var reddit = require("./reddit.js");
 var fs = require('fs');
 
-
-var obj;
-
-
 let accessKey = '6e8dd270bf5941129c8b06a1627207c6';
 
 
 let uri = 'eastus.api.cognitive.microsoft.com';
 let path = '/text/analytics/v2.0/sentiment';
 
-let response_handler = function (response) {
 
+function response_handler (response) {
     let body = '';
     response.on ('data', function (d) {
         body += d;
@@ -24,18 +20,16 @@ let response_handler = function (response) {
     response.on ('end', function () {//Return sentiments here
         let body_ = (JSON.parse (body));
         var avg = weight_avg(body_);
-        //console.log(avg);
         var categor = classify(body_);
-        //console.log(categor);//good,bad,avg
         var tmp = {sentiment:avg, good:categor[0], bad:categor[1], avg:categor[2]}
         var data = JSON.stringify(tmp);
-        console.log(data);
+        console.log(data)
 
     });
     response.on ('error', function (e) {
         console.log ('Error: ' + e.message);
     });
-};
+}
 
 function classify(sent){
     //console.log(sent);
@@ -93,12 +87,6 @@ let get_sentiments = function (documents) {
 
 }
 
-/*let documents = { 'documents': [
-    { 'id': '1', 'language': 'en', 'text': 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
-    { 'id': '2', 'language': 'es', 'text': 'Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico.' },
-]};
-
-get_sentiments (documents);*/
 
 function get_data(data){
     var d = new Date(data.date * 1000);

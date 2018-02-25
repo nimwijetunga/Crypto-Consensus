@@ -4,12 +4,15 @@
   "description": "",
   "main": "text_analytics.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "nraw": "^0.2.5",
     "raw.js": "^0.2.0",
     "request": "^2.83.0",

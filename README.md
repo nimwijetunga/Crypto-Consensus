@@ -1,4 +1,4 @@
-# Name
+# Crypto Consensus
 
 This application sweeps sub-reddits for user comments on different types of cryptocurrency and returs a "score" using Microsoft Azure Text Analytics API. The sentimental analysis determines the market popularity of the cryptocurrency.
 
@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Node is a requirment for this
+Node and a Browser
 
 ### Installing
 
@@ -18,7 +18,7 @@ Clone this repository
 git clone git@github.com:nimwijetunga/hack-the-valley-app.git
 ```
 
-Start the Express JS service (Allows the server to communicate with the web app using local host)
+Start the Express JS service (text_analytics.js file) which allows the server to communicate with the web app using local host
 
 ```
 npm start

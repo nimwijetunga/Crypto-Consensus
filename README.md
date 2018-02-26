@@ -15,7 +15,7 @@ Node and a Browser
 Clone this repository
 
 ```
-git clone git@github.com:nimwijetunga/hack-the-valley-app.git
+git clone git@github.com:nimwijetunga/Crypto-Consensus.git
 ```
 
 Start the Express JS service (server.js file) which allows the server to communicate with the web app using local host

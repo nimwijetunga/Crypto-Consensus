@@ -28,9 +28,9 @@ Run the index.html file and you're good to go
 
 ## Built With
 
-* Node.js/Express.js- Back End (Server Side)
-* HTML/CSS - Front End
-* JQuery/Ajax - Responsive Design
+* Node.js & Express.js- Back End (Server Side)
+* HTML & CSS - Front End
+* JQuery & Ajax - Responsive Design
 
 ## Authors
 
